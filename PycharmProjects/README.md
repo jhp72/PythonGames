@@ -9,10 +9,10 @@ Python Game Projects
 pyinstaller  -w --add-data '.\gui_basic\img1.png;gui_basic' --add-data '.\gui_basic\img2.png;gui_basic' -F .\gui_basic\main.py
 
 # Pyinstaller add folder with images in exe file
-link: https://stackoverflow.com/questions/51264169/pyinstaller-add-folder-with-images-in-exe-file
- => reference:
-=======================================================
+###link: https://stackoverflow.com/questions/51264169/pyinstaller-add-folder-with-images-in-exe-file
+### => reference:
 
+----------------------------------------------------------
 import os
 
 def resource_path(relative_path):
@@ -22,5 +22,4 @@ def resource_path(relative_path):
         base_path = os.path.abspath(".")
 
     return os.path.join(base_path, relative_path)
-
-========================================================
+----------------------------------------------------------
