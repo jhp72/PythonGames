@@ -4,6 +4,14 @@
 import os, random, math
 import pygame
 
+def resource_path(relative_path):
+    try:
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
+
 # 버블 클래스 생성
 class Bubble(pygame.sprite.Sprite):
     def __init__(self, image, color, position=(0,0), row_idx=-1, col_idx=-1):
@@ -291,22 +299,22 @@ clock = pygame.time.Clock()
 
 # 배경 이미지 불러오기
 current_path = os.path.dirname(__file__)
-background = pygame.image.load(os.path.join(current_path, "background.png"))
+background = pygame.image.load(os.path.join(current_path, resource_path("background.png")))
 # 벽 이미지 불러오기
-wall = pygame.image.load(os.path.join(current_path, "wall.png"))
+wall = pygame.image.load(os.path.join(current_path, resource_path("wall.png")))
 
 # 버블 이미지 불러오기
 bubble_images = [
-    pygame.image.load(os.path.join(current_path, "red.png")).convert_alpha(),
-    pygame.image.load(os.path.join(current_path, "yellow.png")).convert_alpha(),
-    pygame.image.load(os.path.join(current_path, "blue.png")).convert_alpha(),
-    pygame.image.load(os.path.join(current_path, "green.png")).convert_alpha(),
-    pygame.image.load(os.path.join(current_path, "purple.png")).convert_alpha(),
-    pygame.image.load(os.path.join(current_path, "black.png")).convert_alpha()
+    pygame.image.load(os.path.join(current_path, resource_path("red.png"))).convert_alpha(),
+    pygame.image.load(os.path.join(current_path, resource_path("yellow.png"))).convert_alpha(),
+    pygame.image.load(os.path.join(current_path, resource_path("blue.png"))).convert_alpha(),
+    pygame.image.load(os.path.join(current_path, resource_path("green.png"))).convert_alpha(),
+    pygame.image.load(os.path.join(current_path, resource_path("purple.png"))).convert_alpha(),
+    pygame.image.load(os.path.join(current_path, resource_path("black.png"))).convert_alpha()
 ]
 
 # 발사대 이미지 불러오기
-pointer_image = pygame.image.load(os.path.join(current_path, "pointer.png"))
+pointer_image = pygame.image.load(os.path.join(current_path, resource_path("pointer.png")))
 pointer = Pointer(pointer_image, (screen_width // 2, 624), 90)
 
 # 게임 관련 변수

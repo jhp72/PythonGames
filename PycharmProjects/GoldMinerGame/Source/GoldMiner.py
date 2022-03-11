@@ -3,6 +3,14 @@ import os
 import math
 import pygame
 
+def resource_path(relative_path):
+    try:
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
+
 # 집게 클래스
 class Claw(pygame.sprite.Sprite):
     def __init__(self, image, position):
@@ -153,21 +161,21 @@ BLACK = (0,0,0) # 검은색
 
 # 배경 이미지 불러오기
 current_path = os.path.dirname(__file__) # 현재 파일의 위치 반환
-background = pygame.image.load(os.path.join(current_path, "background.png"))
+background = pygame.image.load(os.path.join(current_path, resource_path("background.png")))
 
 # 4개 보석 이미지 불러오기 (작은 금, 큰 금, 돌, 다이아몬드)
 gemstone_images = [
-    pygame.image.load(os.path.join(current_path, "small_gold.png")).convert_alpha(), # 작은 금
-    pygame.image.load(os.path.join(current_path, "big_gold.png")).convert_alpha(), # 큰 금
-    pygame.image.load(os.path.join(current_path, "stone.png")).convert_alpha(), # 돌
-    pygame.image.load(os.path.join(current_path, "diamond.png")).convert_alpha()] # 다이아몬드
+    pygame.image.load(os.path.join(current_path, resource_path("small_gold.png"))).convert_alpha(), # 작은 금
+    pygame.image.load(os.path.join(current_path, resource_path("big_gold.png"))).convert_alpha(), # 큰 금
+    pygame.image.load(os.path.join(current_path, resource_path("stone.png"))).convert_alpha(), # 돌
+    pygame.image.load(os.path.join(current_path, resource_path("diamond.png"))).convert_alpha()] # 다이아몬드
 
 # 보석 그룹
 gemstone_group = pygame.sprite.Group()
 setup_gemstone() # 게임에 원하는 만큼의 보석을 정의
 
 # 집게
-claw_image = pygame.image.load(os.path.join(current_path, "claw.png")).convert_alpha()
+claw_image = pygame.image.load(os.path.join(current_path, resource_path("claw.png"))).convert_alpha()
 claw = Claw(claw_image, (screen_width // 2, 110)) # 가로위치는 화면 가로 크기 기준으로 절반, 세로위치는 위에서 110 px
 
 running = True
